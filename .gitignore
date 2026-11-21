@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.safetensors
+*.pt
+*.onnx
+*.apk
+*.wav
+*.flac
+.gradle/
+**/build/
+local.properties
+*.iml
+.idea/
+.DS_Store
+dvitts-nano/

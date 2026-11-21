@@ -1,0 +1,13 @@
+# Optional laptop speed-up for DviTTS On-Device: stage 1 on llama.cpp (x86 Windows / Linux), 0.98 -> 0.63 x real time
+# on a Ryzen 7 7735HS (8 threads). Without it the runner works unchanged on ONNX Runtime.
+# PyPI has only the source of llama-cpp-python (needs a C++ compiler). These are the maintainer's own prebuilt CPU wheels
+# from the project's GitHub release v0.3.36, pinned by sha256 so pip refuses any other file. Install:
+#   pip install --no-deps -r requirements-laptop.txt
+#   pip install typing-extensions diskcache jinja2
+# Apple Silicon Mac: build from source instead (the prebuilt wheel keeps CPU repack on, which gave wrong output on newer
+# ARM chips in our tests):
+#   CMAKE_ARGS="-DGGML_CPU_REPACK=OFF" pip install llama-cpp-python==0.3.36 --no-binary llama-cpp-python --no-cache-dir
+llama-cpp-python @ https://github.com/abetlen/llama-cpp-python/releases/download/v0.3.36/llama_cpp_python-0.3.36-py3-none-win_amd64.whl ; sys_platform == "win32" and platform_machine == "AMD64" \
+    --hash=sha256:ae5e88a2cf464e5a2dde7c8898c2d5c71cc24d03cac6396bf7509456bde0b9fb
+llama-cpp-python @ https://github.com/abetlen/llama-cpp-python/releases/download/v0.3.36/llama_cpp_python-0.3.36-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl ; sys_platform == "linux" and platform_machine == "x86_64" \
+    --hash=sha256:c8a3e98093e950d7a770f794842e36f2db82b2933e8762ed7b5ffd435011e8e4
