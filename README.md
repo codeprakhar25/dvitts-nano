@@ -28,6 +28,8 @@ needs the full model.
 Weights live on Hugging Face, not in this repo. The model folder already contains copies of the two Python files;
 this repo is the source for those files and for the Android app.
 
+Python 3.11 or newer (ONNX Runtime 1.32 has no wheels for Python 3.10).
+
 ```bash
 pip install onnxruntime==1.32.0 tokenizers numpy num2words indic-numtowords
 hf download prakharkhatri/dvitts-nano --local-dir dvitts-nano
